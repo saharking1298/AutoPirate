@@ -9,11 +9,9 @@ from selenium.common.exceptions import TimeoutException
 
 def initialize_chrome(headless: bool = True) -> webdriver.Chrome:
     options = webdriver.ChromeOptions()
-    arguments = []
+    options.add_experimental_option("excludeSwitches", ["enable-logging"])
     if headless:
-        arguments.append("headless")
-    for argument in arguments:
-        options.add_argument(argument)
+        options.add_argument("headless")
     driver = webdriver.Chrome(options)
     Logger.log("Initialized Chrome!")
     return driver
@@ -21,11 +19,8 @@ def initialize_chrome(headless: bool = True) -> webdriver.Chrome:
 
 def initialize_firefox(headless: bool = True) -> webdriver.Firefox:
     options = webdriver.FirefoxOptions()
-    arguments = []
     if headless:
-        arguments.append("--headless")
-    for argument in arguments:
-        options.add_argument(argument)
+        options.add_argument("--headless")
     driver = webdriver.Firefox(options)
     Logger.log("Initialized Firefox!")
     return driver
