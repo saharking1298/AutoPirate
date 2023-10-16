@@ -2,13 +2,15 @@ import webbrowser
 from scrapers import FitgirlScraper
 from utils import Logger
 from utils.scraper_utils import filter_search_results
-from utils.webdrivers import initialize_chrome, ExtendedWebDriver
+from utils.webdrivers import initialize_browser, ExtendedWebDriver
 from utils.textutils import user_confirmation_dialog, multiple_choice_menu
+
+BROWSER = "chrome"  # Supported browsers: chrome, firefox
 
 
 class App:
     def __init__(self):
-        self.driver = initialize_chrome()
+        self.driver = initialize_browser(BROWSER)
         self.utilDriver = ExtendedWebDriver(self.driver)
         self.scraper = FitgirlScraper()
 
