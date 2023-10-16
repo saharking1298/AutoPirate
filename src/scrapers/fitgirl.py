@@ -19,9 +19,11 @@ class FitgirlScraper:
     def get_search_results(self, page_content: str):
         soup = BeautifulSoup(page_content, "html.parser")
         headings = soup.select("h1.entry-title>a")
+        meta_tags = soup.select("span.cat-links>a")
         results = {}
-        for heading in headings:
-            results[heading.text] = heading["href"]
+        for i in range(len(headings)):
+            if "Lossless Repack" in meta_tags[i].text:
+                results[headings[i].text] = headings[i]["href"]
         return results
 
     def get_download_link(self, page_content: str) -> str:
