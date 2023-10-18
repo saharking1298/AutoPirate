@@ -19,9 +19,7 @@ class Logger:
 
     @staticmethod
     def log(*text, sep=" "):
-        # Logger._log("LOG", *text, sep=sep)
-        text = sep.join([*text]) + "\n"
-        print(text)
+        print(*text, sep=sep, end="\n\n")
 
     @staticmethod
     def error(*text, sep=" "):
