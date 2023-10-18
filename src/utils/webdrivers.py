@@ -26,15 +26,6 @@ def initialize_firefox(headless: bool = True) -> webdriver.Firefox:
     return driver
 
 
-def initialize_browser(browser: str, headless: bool = True):
-    if browser == "chrome":
-        return initialize_chrome(headless)
-    elif browser == "firefox":
-        return initialize_firefox(headless)
-    else:
-        raise ValueError("Invalid browser")
-
-
 class ExtendedWebDriver:
     def __init__(self, driver: Union[webdriver.Chrome, webdriver.Firefox]):
         self.driver = driver
